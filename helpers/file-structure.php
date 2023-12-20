@@ -1,17 +1,38 @@
 <?php
 
+/** Function to delete directory */
+function deleteDirectory($dir) {
+    if (!is_dir($dir)) {
+        return;
+    }
+
+    $files = array_diff(scandir($dir), ['.', '..']);
+    foreach ($files as $file) {
+        $path = "$dir/$file";
+        (is_dir($path)) ? deleteDirectory($path) : unlink($path);
+    }
+
+    rmdir($dir);
+}
+
 /** Go through the Files Array and create the Files/Folder accordingly */
 function createFolderStructure($fileOrFolderNameStrings)
 {
+    $main_directory = "./";
+    $temp_directory = $main_directory . "temp/";
+
+    // Check if the 'temp' directory exists
+    if (is_dir($temp_directory)) {
+        // If it exists, delete it and its contents
+        deleteDirectory($temp_directory);
+    }
+
+    // Create the 'temp' directory
+    createFolderDirectory($temp_directory);
+
     // Iterate through the Files/Folder Paths
     foreach ($fileOrFolderNameStrings as $fileOrFolderPath)
     {
-        $main_directory = "./"; // Main directory where the 'temp' folder will be created
-        $temp_directory = $main_directory . "temp/"; // Directory name 'temp' inside the main directory
-
-        // Check if the 'temp' directory exists, if not, create it
-        createFolderDirectory($temp_directory);
-
         $isFile = true; 
 
         // Check if it is File or Folder
@@ -20,17 +41,11 @@ function createFolderStructure($fileOrFolderNameStrings)
             $isFile = false;
         }
 
-        if($isFile){
-
-            // Get the name of the file broken in a normal sentence. Eg. ReadMoreInfo -> read more info
+        if ($isFile) {
+            // Get the name of the file broken in a normal sentence
             $normalFileName = getNormalFileName(basename($fileOrFolderPath));
-
-            // Get file extension with .
             $fileExtension = getFileExtension($fileOrFolderPath);
-
-            // Get file content
             $fileContent = getFileContent($normalFileName, $fileExtension);
-
         }
 
         // File or Folder to be created inside the 'temp' folder
@@ -38,7 +53,6 @@ function createFolderStructure($fileOrFolderNameStrings)
 
         // Function call to create file (with boiler code) or folder
         createFileOrFolder($targetPath, $fileContent, $isFile);
-
     }
 }
 
