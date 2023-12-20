@@ -20,7 +20,6 @@
 
     // Use 'tmp_name' key for temporary file path
     if (move_uploaded_file($csvFile['tmp_name'], $target_file)) { 
-        $response["message"] = "The file " . htmlspecialchars(basename($csvFile['name'])) . " has been uploaded.";
 
         // Get all the File Path's Array
         $allFiles = getFileNamesFromFile($target_file);

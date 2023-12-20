@@ -11,5 +11,4 @@ function printResponse($status, $status_code, $data, $message)
     print_r(json_encode($response, JSON_PRETTY_PRINT));
 }
 
-
 ?>
