@@ -8,17 +8,7 @@
     require_once './helpers/file-structure.php';
     require_once './helpers/file-create.php';
     require_once './helpers/file-name.php';
-
-    function printResponse($status, $status_code, $data, $message)
-    {
-        $response = [
-            "status" => $status,
-            "status_code" => $status_code,
-            "data" => $data,
-            "message" => $message
-        ];
-        print_r(json_encode($response, JSON_PRETTY_PRINT));
-    }
+    require_once './helpers/print-response.php';
 
     $csvFile = $_FILES['csvFile'];
     $technology = isset($_GET['technology']) ? strtolower($_GET['technology']) : '';
