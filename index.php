@@ -26,13 +26,10 @@
         // Get all the File Path's Array
         $allFiles = getFileNamesFromFile($target_file);
 
-        // To convert array of arrays to array of strings
-        $arrayOfFileStrings = array_map(function ($innerArray) {
-            return implode("", $innerArray);
-        }, $allFiles);
+        $filesArray = getCSVInRequiredFormat($allFiles); 
 
         // Call to the Main Function that inits the Process
-        createFolderStructure($arrayOfFileStrings);
+        createFolderStructure($filesArray);
 
         // Zip the 'temp' directory
         $zipFileName = $technology . '.zip';

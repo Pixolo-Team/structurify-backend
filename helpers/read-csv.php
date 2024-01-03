@@ -1,21 +1,45 @@
 <?php
 
-/** Returns array of array of data */
 function getFileNamesFromFile($target_file)
 {
-    $arrayOfFiles = array();
-    // Check if the CSV file exists
+    $arrayOfFiles = [];
     if (file_exists($target_file)) {
-        // Open the CSV file in read mode
         $csvFileStream = fopen($target_file, 'r');
 
-        // Check if file opening was successful
         if ($csvFileStream !== false) {
-            // Read each line from the file
-            while (($singleFilePath = fgetcsv($csvFileStream)) !== false) {    
-                array_push($arrayOfFiles, $singleFilePath);
+            $currentPath = ''; // Initialize currentPath
+
+            while (($singleFilePath = fgets($csvFileStream)) !== false) {
+                $singleFilePath = trim($singleFilePath);
+
+                // Remove trailing commas
+                $singleFilePath = rtrim($singleFilePath, ',');
+
+                if (!empty($singleFilePath)) {
+                    $segments = explode(',', $singleFilePath);
+                    $currentSegments = explode(',', $currentPath);
+                    $outputSegments = [];
+
+                    foreach ($segments as $index => $segment) {
+                        if (!empty($segment)) {
+                            $outputSegments[] = $segment;
+                        } else {
+                            // Handle empty segments by using '/' or the previous segment
+                            if (isset($currentSegments[$index])) {
+                                $outputSegments[] = $currentSegments[$index];
+                            } else {
+                                $outputSegments[] = '/';
+                            }
+                        }
+                    }
+
+                    // Construct the file path
+                    $currentPath = implode(',', $outputSegments);
+                    // Store the file path
+                    $arrayOfFiles[] = $currentPath;
+                }
             }
-            // Close the file
+            // Close the CSV File
             fclose($csvFileStream);
         } else {
             echo "Failed to open the file.";
@@ -24,4 +48,18 @@ function getFileNamesFromFile($target_file)
     }
 }
 
+function getCSVInRequiredFormat($arrayOfFiles)
+{
+    $formattedArray = [];
+
+    foreach ($arrayOfFiles as $line) {
+        // Replace ',' with ',/'
+        $formattedLine = str_replace(',', '/', $line);
+        $formattedArray[] = $formattedLine;
+    }
+
+    return $formattedArray;
+}
+
 ?>
+
