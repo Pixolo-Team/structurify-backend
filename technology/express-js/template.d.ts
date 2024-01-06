@@ -1,0 +1,7 @@
+// IMPORTS //
+
+export interface |PascalCase| {
+	
+}
+
+
