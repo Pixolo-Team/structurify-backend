@@ -23,9 +23,10 @@
     // Use 'tmp_name' key for temporary file path
     if (move_uploaded_file($csvFile['tmp_name'], $target_file)) { 
 
-        // Get all the File Path's Array
+        // Get all the File Path's Array - Example: a,b,c,d - a,b,e,f - a,b,e,g
         $allFiles = getFileNamesFromFile($target_file);
 
+        // Get the Array of Files in the Required Format - Example: a/b/c/d - a/b/e/f - a/b/e/g
         $filesArray = getCSVInRequiredFormat($allFiles); 
 
         // Call to the Main Function that inits the Process
