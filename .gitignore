@@ -25,3 +25,5 @@
 /vendors/*
 
 temp
+
+.DS_Store
