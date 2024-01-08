@@ -56,7 +56,7 @@
 
         // Print the Response according to the Format required
         printResponse(true, 200, [
-            "zip_file" => $zipFileName
+            "zip_file" => "outputs/$zipFileName"
         ], "Zip file returned successfully");
 
     }
