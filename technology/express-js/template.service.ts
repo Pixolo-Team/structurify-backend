@@ -3,10 +3,9 @@
 // MODELS //
 
 // TYPES //
-import { |PascalCase| } from "../types/|kebab-case|";
+import { ServiceResponseData } from "../types/app";
 
 // ENUMS //
-import { |PascalCase| } from "../enums/|kebab-case|.enum";
 
 // DATA SERVICES //
 import { get|PascalCase|DataService } from "../data-services/|kebab-case|.ds";
@@ -14,7 +13,7 @@ import { get|PascalCase|DataService } from "../data-services/|kebab-case|.ds";
 // ==== FUNCTIONS START HERE ==== //
 
 /** Get |PascalCase| service */
-const get|PascalCase|Service = async (): Promise<ServiceResponseData<|PascalCase|[]>> => {
+const get|PascalCase|Service = async (): Promise<ServiceResponseData<any>> => {
 	try {
 		// Get data from data service
 

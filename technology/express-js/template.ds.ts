@@ -1,14 +1,14 @@
 // MODULES //
 
 // TYPES //
-import { Player, PlayerStats } from "../types/|kebab-case|";
+import { QueryResponseData } from "../types/app";
 
 // SERVICES //
 
 // ==== FUNCTIONS START HERE ==== //
 
 /** Get data from sql database */
-const get|PascalCase|DataService = async (): Promise<QueryResponseData<|PascalCase|[]>> => {
+const get|PascalCase|DataService = async (): Promise<QueryResponseData<any>> => {
 	// Get data from database and return it
 	try {
 		// Execute a query to get all the |PascalCase| from the '|SnakeCase|' table

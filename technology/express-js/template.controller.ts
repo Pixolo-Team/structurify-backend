@@ -4,12 +4,10 @@ import { Request, Response } from "express";
 // MODELS //
 
 // SERVICES //
-import { |camelCase| } from "../services/|kebab-case|.service";
 
 // UTILS //
 
 // ENUMS //
-import { |PascalCase| } from "../enums/|kebab-case|.enum";
 
 // ==== FUNCTIONS START HERE ==== //
 
