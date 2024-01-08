@@ -21,12 +21,12 @@
     // Generate a timestamp-based file name for the CSV file
     $timestamp = time();
     $fileExtension = pathinfo($csvFile['name'], PATHINFO_EXTENSION); // Get the file extension
-    $newFileName = $timestamp . '_uploaded.' . $fileExtension; // New timestamp-based file name 
+    $newFileName = $timestamp . '-uploaded.' . $fileExtension; // New timestamp-based file name 
 
 
     // Concat new file name based on timestamp to the target directory 
     $target_file = $csvUploadDirectory . $newFileName; 
-    $zipOutputDirectory = "./output/";
+    $zipOutputDirectory = "./outputs/";
 
     // Use 'tmp_name' key for temporary file path
     if (move_uploaded_file($csvFile['tmp_name'], $target_file)) { 
@@ -43,9 +43,7 @@
         // Zip the 'temp' directory
         $zipFileName = $technology . '-' . $timestamp . '.zip'; // Include timestamp in the file name
 
-        print_r($zipFileName);
-
-        // Use the output directory for storing zip files
+        // Use the outputs directory for storing zip files
         $zipTargetFile = $zipOutputDirectory . $zipFileName;
         createZipFromFolder('temp', $zipTargetFile);
 
