@@ -16,6 +16,7 @@ import { get|PascalCase|DataService } from "../data-services/|kebab-case|.ds";
 const get|PascalCase|Service = async (): Promise<ServiceResponseData<any>> => {
 	try {
 		// Get data from data service
+		const |camelCase| = await get|PascalCase|DataService();
 
 		// If an internal server error occurs, return a failure status
 

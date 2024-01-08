@@ -8,6 +8,7 @@ import { Request, Response } from "express";
 // UTILS //
 
 // ENUMS //
+import { ResponseCode, ResponseMessage } from "../../enums/response.enum";
 
 // ==== FUNCTIONS START HERE ==== //
 

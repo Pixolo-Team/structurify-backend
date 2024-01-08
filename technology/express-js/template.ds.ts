@@ -7,7 +7,7 @@ import { QueryResponseData } from "../types/app";
 
 // ==== FUNCTIONS START HERE ==== //
 
-/** Get data from sql database */
+/** Get |camelCase| data from sql database */
 const get|PascalCase|DataService = async (): Promise<QueryResponseData<any>> => {
 	// Get data from database and return it
 	try {
@@ -20,8 +20,6 @@ const get|PascalCase|DataService = async (): Promise<QueryResponseData<any>> => 
 
 	}
 };
-
-// ==== FUNCTIONS END HERE ==== //
 
 // ==== EXPORTS ==== //
 export { get|PascalCase|DataService };
