@@ -28,5 +28,5 @@ temp
 
 .DS_Store
 
-outputs/tar
-csv-files/tar
+outputs/*
+csv-files/*
