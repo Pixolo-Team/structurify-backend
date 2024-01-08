@@ -15,10 +15,18 @@
     $csvFile = $_FILES['csvFile'];
     $technology = isset($_GET['technology']) ? strtolower($_GET['technology']) : '';
 
-    // Set your desired upload directory
-    $target_directory = "./"; 
-    // Use 'name' key to access the original file name
-    $target_file = $target_directory . basename($csvFile['name']); 
+    // Set your desired upload directory to upload CSV File
+    $csvUploadDirectory = "./csv-files/";
+
+    // Generate a timestamp-based file name for the CSV file
+    $timestamp = time();
+    $fileExtension = pathinfo($csvFile['name'], PATHINFO_EXTENSION); // Get the file extension
+    $newFileName = $timestamp . '_uploaded.' . $fileExtension; // New timestamp-based file name 
+
+
+    // Concat new file name based on timestamp to the target directory 
+    $target_file = $csvUploadDirectory . $newFileName; 
+    $zipOutputDirectory = "./output/";
 
     // Use 'tmp_name' key for temporary file path
     if (move_uploaded_file($csvFile['tmp_name'], $target_file)) { 
@@ -33,8 +41,20 @@
         createFolderStructure($filesArray);
 
         // Zip the 'temp' directory
-        $zipFileName = $technology . '.zip';
-        createZipFromFolder('temp', $zipFileName);
+        $zipFileName = $technology . '-' . $timestamp . '.zip'; // Include timestamp in the file name
+
+        print_r($zipFileName);
+
+        // Use the output directory for storing zip files
+        $zipTargetFile = $zipOutputDirectory . $zipFileName;
+        createZipFromFolder('temp', $zipTargetFile);
+
+        // Check if the 'temp' directory exists
+        $temp_directory = "./temp/";
+        if (is_dir($temp_directory)) {
+            // If it exists, delete it and its contents
+            deleteDirectory($temp_directory);
+        }
 
         // Print the Response according to the Format required
         printResponse(true, 200, [

@@ -21,12 +21,6 @@ function createFolderStructure($fileOrFolderNameStrings)
     $main_directory = "./";
     $temp_directory = $main_directory . "temp/";
 
-    // Check if the 'temp' directory exists
-    if (is_dir($temp_directory)) {
-        // If it exists, delete it and its contents
-        deleteDirectory($temp_directory);
-    }
-
     // Create the 'temp' directory
     createFolderDirectory($temp_directory);
 
