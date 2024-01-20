@@ -18,6 +18,11 @@ function getNormalFileName($fileBaseName) {
     return $normalFileName;
 }
 
+/** Removes the last 's' from a string if present */
+function removeLastS($inputString) {
+    return preg_replace('/s$/', '', $inputString);
+}
+
 /** Replaces |camelCase| in boiler code to it's file Name in camel case Eg: read info less to readInfoLess instead of |camelCase| in the file */
 function replacePlaceholdersInBoilerCode($fileName, $fileExtension, $boilerCodeContent) {
     $kebabCaseFileName = str_replace(' ', '-', strtolower($fileName));
@@ -25,12 +30,15 @@ function replacePlaceholdersInBoilerCode($fileName, $fileExtension, $boilerCodeC
     $pascalCaseFileName = str_replace(' ', '', ucwords($fileName));
     $camelCaseFileName = lcfirst($pascalCaseFileName);
     $CapitalFileName = ucwords($fileName);
+    // Remove 's' from the end if present for |PascalCase-nos|
+    $pascalCaseNoSFileName = removeLastS($pascalCaseFileName);
 
     // Replace placeholders in the boilerplate code with respective formatted filenames
     $modifiedContent = str_replace('|camelCase|', $camelCaseFileName, $boilerCodeContent);
     $modifiedContent = str_replace('|kebab-case|', $kebabCaseFileName, $modifiedContent);
     $modifiedContent = str_replace('|snake_case|', $snakeCaseFileName, $modifiedContent);
     $modifiedContent = str_replace('|PascalCase|', $pascalCaseFileName, $modifiedContent);
+    $modifiedContent = str_replace('|PascalCase-nos|', $pascalCaseNoSFileName, $modifiedContent);
     $modifiedContent = str_replace('|normal|', $fileName, $modifiedContent);
     $modifiedContent = str_replace('|Capital|', $CapitalFileName, $modifiedContent);
 
