@@ -106,7 +106,7 @@ function replacePlaceholdersInBoilerCode($fileName, $fileExtension, $boilerCodeC
     $modifiedContent = str_replace('|kebab-case|', $kebabCaseFileName, $modifiedContent);
     $modifiedContent = str_replace('|snake_case|', $snakeCaseFileName, $modifiedContent);
     $modifiedContent = str_replace('|PascalCase|', $pascalCaseFileName, $modifiedContent);
-    $modifiedContent = str_replace('|PascalCase-nos|', $pascalCaseNoSFileName, $modifiedContent);
+    $modifiedContent = str_replace('|PascalCase-nos|', $pascalSingularFileName, $modifiedContent);
     $modifiedContent = str_replace('|normal|', $fileName, $modifiedContent);
     $modifiedContent = str_replace('|Capital|', $CapitalFileName, $modifiedContent);
 

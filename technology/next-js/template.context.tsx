@@ -6,7 +6,7 @@ import React, { createContext, useContext } from "react";
 
 
 // Define the shape of the |PascalCase|
-type |PascalCase|ContextType = {
+type |PascalCase-nos|ContextType = {
   // Define the properties and methods of the 
   // Example:
   // someProperty: string;
@@ -14,7 +14,7 @@ type |PascalCase|ContextType = {
 };
 
 // Create the Context
-const |PascalCase|Context = createContext<|PascalCase|ContextType | null>(null);
+const |PascalCase|Context = createContext<|PascalCase-nos|ContextType | null>(null);
 
 /** Custom hook to use the |PascalCase|Context */
 export const use|PascalCase|Context = () => {
@@ -32,7 +32,7 @@ type |PascalCase|ProviderProps = {
 /** |PascalCase|Provider Component */
 export const |PascalCase|Provider: React.FC<|PascalCase|ProviderProps> = ({ children }) => {
   // Define initial  value
-  const value: |PascalCase|ContextType = {
+  const value: |PascalCase-nos|ContextType = {
     // Initialize your  properties and methods here
     // Example:
     // someProperty: "",
@@ -43,7 +43,7 @@ export const |PascalCase|Provider: React.FC<|PascalCase|ProviderProps> = ({ chil
 };
 
 /** Custom hook to use the |PascalCase| */
-export const useSome = () => {
+export const use|PascalCase| = () => {
   const context = useContext(|PascalCase|Context);
   if ( context === null) {
     throw new Error("useSome must be used within a |PascalCase|Provider");
