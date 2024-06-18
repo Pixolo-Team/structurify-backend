@@ -43,7 +43,7 @@ export const |PascalCase|Provider: React.FC<|PascalCase|ProviderProps> = ({ chil
 };
 
 /** Custom hook to use the |PascalCase| */
-export const useSome = () => {
+export const use|PascalCase| = () => {
   const context = useContext(|PascalCase|Context);
   if ( context === null) {
     throw new Error("useSome must be used within a |PascalCase|Provider");
